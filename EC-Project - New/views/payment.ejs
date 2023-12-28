@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <script src="../script/index.js" defer></script>
+    <title>Payment</title>
+    <style>
+        #container {
+            height: 80vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        hr {
+            height: 1px;
+            width: 100%;
+            background-color: #f7f7fa;
+            border: 0;
+            margin: 2rem 0;
+        }
+
+        #details {
+            display: flex;
+
+        }
+
+        #details img {
+            height: 150px;
+            width: 180px;
+        }
+
+        #descrip h5 {
+            font-weight: 300;
+            font-size: 52px;
+            color: #43484D;
+            letter-spacing: -2px;
+        }
+
+        #descrip span {
+            font-size: 26px;
+            font-weight: 300;
+            color: #43474D;
+            margin-right: 20px;
+        }
+
+        label {
+            display: block;
+            /* height: 60px; */
+            height: fit-content;
+            width: 200px;
+            background-color: aliceblue;
+            padding: 20px 0px 10px 25px;
+        }
+
+        .disabled:hover {
+            background-color: gray;
+        }
+
+        .disabled:hover:after {
+            content: '(Not Available)';
+            color: rgb(44, 41, 41);
+
+        }
+
+        input:disabled {
+            background-color: red;
+            color: red;
+        }
+
+        input {
+            height: 20px;
+            width: 20px;
+        }
+        button{
+            margin-top: 15px;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            float: right;
+            background-color: rgb(85, 85, 244);
+        }
+    </style>
+</head>
+
+<body>
+    <%-include('sidebar')%>
+        <div id="container">
+            <div id="details">
+                <img src="<%=product.image%>" alt="">
+                <div id="descrip">
+
+                    <h5>
+                        <%=product.name%>
+                    </h5>
+                    <span>Total price ₹<%=product.price%> rupeese</span>
+                </div>
+            </div>
+            <hr>
+            <form action="/orderplaced?id=<%=product._id%>" method="post">
+                <h3>Choose a payment Option</h3>
+                <label for="debitcard" class="disabled">
+                    <input type="radio" id="debitcard" disabled>
+                    <span for="debitcard">Debit Card</span>
+                    <span class="msg" style="display: none;">Not Available</span>
+                </label>
+                <br>
+                <label for="creditcard" class="disabled">
+                    <input type="radio" id="creditcard" disabled>
+                    <span for="creditcard">Credit Card</span>
+                </label>
+                <br>
+                <label for="upi" class="disabled">
+                    <input type="radio" id="upi" disabled>
+                    <span for="upi">UPI</span>
+                </label>
+                <br>
+                <label for="cash">
+                    <input type="radio" id="cash">
+                    <span for="cash">Cash On delivery</span>
+                </label>
+
+                <button type="submit">Place Order</button>
+            </form>
+        </div>
+</body>
+
+</html>

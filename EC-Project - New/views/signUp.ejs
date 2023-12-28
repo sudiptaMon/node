@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  <title>sign up</title>
+</head>
+
+<body>
+
+  <div class="container" id="container">
+
+    <div class="form-container sign-in-container">
+
+      <form action="/signup" method="post" enctype="multipart/form-data">
+        <h1>Sign Up</h1>
+        <div class="social-container">
+
+        </div>
+        <span></span>
+        <input type="text" placeholder="Username" name="username">
+        <input type="email" placeholder="Email" name="email"/>
+        <input type="password" placeholder="Password" name="password"/>
+        <label for="file"><i class="fa fa-cloud-upload"></i></label>
+        <input type="file" id="file" name="file" hidden>
+        <button type="submit">Sign up</button>
+        <%=massage%>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-right">
+          <h1>Welcome Back!</h1>
+          <p>To keep connected with us please login with your personal info</p>
+          <button class="ghost" id="signUp"><a href="/login">Sign In</a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+
+  </footer>
+</body>
+
+</html>

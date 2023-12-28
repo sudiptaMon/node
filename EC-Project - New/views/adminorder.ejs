@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/index.css" />
+    <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <script src="../script/index.js" defer></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Orders</title>
+
+    <style>
+        .p-container {
+            /* max-width: 1200px;*/
+            /* margin: 0 auto; */
+            /* padding: 15px; */
+            /* display: flex; */
+            /* margin-bottom: 20px;  */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            /* margin: 5px; */
+            padding: 30px;
+            width: 100%;
+            background-color: #fff;
+
+            /* transition: transform 0.3s; */
+            /* gap: 20px; */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px;
+            margin-left: 80px;
+            align-items: flex-start;
+            /* z-index: -1; */
+        }
+    </style>
+</head>
+
+<body>
+    <%-include('sidebar')%>
+        <div class="product-container">
+            <%orders.forEach((item)=>{%>
+                <span style="display: inline;">
+                    <%=item.username%>
+                </span>
+                <div class="p-container">
+                    <%item.orders.forEach((i)=>{%>
+
+
+                        <div class="product-card">
+
+                            <div class="product-tumb">
+                                <a href="/product?id=<%=i._id%>"> <img src="<%=i.image%>" alt=""></a>
+                            </div>
+                            <div class="product-details">
+                                <span class="product-catagory">
+                                    <%=i.category%>
+                                </span>
+                                <h4><a href="/product?id=<%=i._id%>">
+                                        <%=i.name%>
+                                    </a></h4>
+                                <p>
+                                    <%=i.descripton%>
+                                </p>
+                                <p>
+                                    <%=i.address.name%>
+                                    <%=i.address.address%>
+                                    <%=i.address.zipcode%>
+                                </p>
+                                <div class="product-bottom-details">
+                                    <div class="product-price"><small>$96.00</small>
+                                        <%=i.price%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <%})%>
+                </div>
+                <%})%>
+        </div>
+</body>
+
+</html>

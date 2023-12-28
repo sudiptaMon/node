@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<!-- Coding by CodingNepal || www.codingnepalweb.com -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product</title>
+  <link rel="stylesheet" href="../css/index.css" />
+  <!-- Boxicons CSS -->
+  <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <script src="../script/index.js" defer></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <style>
+    .p-container {
+      /* max-width: 1200px;*/
+      /* margin: 0 auto; */
+      /* padding: 15px; */
+      /* display: flex; */
+      /* margin-bottom: 20px;  */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      /* margin: 5px; */
+      padding: 0px;
+      width: fit-content;
+      background-color: #fff;
+      /* transition: transform 0.3s; */
+      /* gap: 20px; */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 20px;
+      margin-left: 80px;
+      align-items: flex-start;
+      width: 100%;
+      /* z-index: -1; */
+    }
+
+
+    .left-column {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45%;
+      padding: 10px;
+      /* position: relative; */
+      margin-right: 25px;
+      transition: all 0.3s ease;
+      background-color: #f0f0f0;/
+    }
+
+    .right-column {
+      width: 35%;
+      margin-top: 60px;
+    }
+
+    .left-column img {
+      width: 62%;
+      position: relative;
+      left: 0;
+      top: 0;
+      transition: transform 0.3s;
+      object-fit: contain;
+      /* transition: all 0.3s ease; */
+    }
+
+
+
+    .product-description {
+      border-bottom: 1px solid #E1E8EE;
+      margin-bottom: 20px;
+    }
+
+    .product-description span {
+      font-size: 12px;
+      color: #358ED7;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .product-description h1 {
+      font-weight: 300;
+      font-size: 52px;
+      color: #43484D;
+      letter-spacing: -2px;
+    }
+
+    .product-description p {
+      font-size: 16px;
+      font-weight: 300;
+      color: #86939E;
+      line-height: 24px;
+    }
+
+    .product-price {
+      display: flex;
+      align-items: center;
+    }
+
+    .product-price span {
+      font-size: 26px;
+      font-weight: 300;
+      color: #43474D;
+      margin-right: 20px;
+    }
+
+
+    .detail-btn {
+      display: inline-block;
+      background-color: transparent;
+      border-radius: 6px;
+      font-size: 16px;
+      color: black;
+      text-decoration: none;
+      padding: 12px 30px;
+      transition: all .5s;
+      border: black 1px solid;
+
+    }
+
+
+    .remove-btn {
+      display: inline-block;
+      background-color: transparent;
+      border-radius: 6px;
+      font-size: 16px;
+      /* color: #FFFFFF; */
+      color: black;
+      text-decoration: none;
+      padding: 12px 30px;
+      transition: all .5s;
+      margin-top: 5px;
+      border: black 1px solid;
+    }
+
+    .buy-btn {
+      display: inline-block;
+      background-color: rgb(39, 39, 246);
+      border-radius: 6px;
+      font-size: 16px;
+      color: #FFFFFF;
+      color: black;
+      text-decoration: none;
+      padding: 12px 30px;
+      transition: all .5s;
+      margin-top: 5px;
+      border: black 1px solid;
+      margin-left: 81%;
+    }
+
+    .cart-btn:hover {
+      background-color: #64af3d;
+    }
+
+    .cost-section {
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      background-color: #1c1c1c;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 10px;
+    }
+
+    .cost-section span {
+      background-color: #43474D;
+      color: rgb(226, 210, 210);
+      padding: 5px;
+      margin-left: 70%;
+    }
+
+    .cost-section ol {
+      list-style-type: none;
+      background-color: #43474D;
+      /* padding: 20px; */
+      width: 50%;
+
+    }
+
+    .cost-section ol li {
+      background-color: #43474D;
+      color: rgb(226, 210, 210);
+      padding: 5px;
+      /* margin-left: 35px; */
+    }
+
+    #msg {
+      margin: 20% 50% 0% 50%;
+    }
+
+    #msg h1 {
+      color: rgb(129, 144, 165);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+
+  <%-include('sidebar')%>
+
+
+    <div class="product-container">
+      <%let totalCost=0%>
+        <%if(product.length==0){%>
+          <div id="msg">
+            <h1>No data in the cart.</h1>
+          </div>
+          <%}%>
+            <%product.forEach((item)=>{%>
+
+              <%totalCost+=parseInt(item.price)%>
+                <div class="p-container">
+                  <div class="left-column">
+                    <img data-image="black" src="<%=item.image%>" alt="<%=item.name%>" />
+                  </div>
+                  <div class="right-column">
+                    <div class="product-description">
+                      <span>
+                        <%=item.category%>
+                      </span>
+                      <h1>
+                        <%=item.name%>
+                      </h1>
+                      <p>
+                        <%=item.descripton%>
+                      </p>
+                    </div>
+                    <div class="product-price">
+                      <span>₹<%=item.price%></span>
+                    </div>
+                    <a href="/removefromcart?id=<%=item.id%>" class="remove-btn"><i class="fa fa-trash-o"></i>
+                      Remove</a>
+                    <a href="/product?id=<%=item._id%>" class="detail-btn"><i class="fa fa-info-circle"></i> Details</a>
+                  </div>
+                </div>
+                <%})%>
+
+                  <%if(product.length!=0){%>
+                    <div class="cost-section">
+
+                      <ol>
+                        <%product.forEach((item)=>{%>
+                          <li>
+
+                            <%=item.name%>
+
+                              <span>
+                                ₹ <%=item.price%>
+                              </span>
+                          </li>
+                          <hr>
+                          <%})%>
+                            <li>Total Cost <span> ₹ <%=totalCost%></span>
+                            </li>
+                            <a href="" class="buy-btn">Buy Now</a>
+                      </ol>
+
+
+                    </div>
+                    <%}%>
+                      
+    </div>
+</body>
+
+</html>

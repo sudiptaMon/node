@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <script src="../script/index.js" defer></script>
+    <link
+      flex
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Document</title>
+    <style>
+      form {
+        display: flex;
+        gap: 100px;
+        /* margin: 20px 0px 0px 20px; */
+        height: 50vh;
+        width: 100vw;
+        align-items: center;
+        justify-content: center;
+      }
+      form input {
+        height: 40px;
+        width: 200px;
+        margin-top: 5px;
+        background-color: aliceblue;
+        border: 1px solid rgb(195, 222, 246);
+        border-radius: 5px;
+      }
+      form label {
+        font-family: "Courier New", Courier, monospace;
+      }
+      #right-div img {
+        height: 100px;
+        width: 100px;
+        cursor: pointer;
+      }
+      button{
+        width: 100px;
+        padding: 5px;
+        margin-left: 10px;
+        border-radius: 5px;
+        background-color: gray;
+        cursor: pointer;
+      }
+      button:hover{
+        background-color: rgb(116, 116, 250);
+      }
+
+      #table{
+        width: 100vw;
+        margin: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <%-include('sidebar')%>
+    <form action="/addproduct" method="post" enctype="multipart/form-data">
+      <div id="left-div">
+        <label for="name">Product Name</label>
+        <br />
+        <input type="text" name="productname" id="name" />
+        <br />
+        <br />
+        <label for="price">Price</label>
+        <br />
+        <input type="text" name="price" id="price" />
+        <br />
+        <br />
+        <label for="description">Description</label>
+        <br />
+
+        <textarea
+          name="description"
+          id="description"
+          cols="40"
+          rows="5"
+        ></textarea>
+      </div>
+
+      <div id="right-div">
+        <label for="category">Product Category</label>
+        <br />
+        <input type="text" name="category" id="category" />
+        <br />
+        <br />
+        <label for="sub-category">Sub Category</label>
+        <br />
+        <input type="text" name="sub_category" id="sub-category" />
+        <br /><br />
+        <label>Product Image</label>
+        <br />
+        <label for="image"
+          ><img src="../images/Product/icon/download.png" alt=""
+        /></label>
+        <input type="file" name="image" id="image" hidden />
+        <br>
+        <button type="submit">Enter</button>
+      </div>
+    </form>
+    <hr>
+
+    <table border="2" id="table">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category,Sub-category</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Operations</th>
+      </tr>
+      <%product.forEach((item)=>{%>
+        <tr>
+          <td><%=item.id%></td>
+          <td><%=item.name%></td>
+          <td><%=item.price%></td>
+          <td><%=item.category%>,<%=item.sub_category%></td>
+          <td><%=item.description%></td>
+          <td><img src="<%=item.image%>" alt=""></td>
+          <td><a href=""><i class="fa fa-trash"></i></a> <a href=""><i class="fa fa-edit"></i></a></td>
+        </tr>
+        <%})%>
+    </table>
+  </body>
+</html>

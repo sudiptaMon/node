@@ -1,0 +1,158 @@
+<div class="sidebar locked">
+    <div class="logo_items flex">
+        <span class="nav_image">
+            <img src="../images/logo.png" alt="logo_img" />
+        </span>
+        <span class="logo_name">E-Com</span>
+        <i class="bx bx-lock-open-alt" id="lock-icon" title="Unlock Sidebar"></i>
+        <i class="bx bx-x" id="sidebar-close"></i>
+    </div>
+
+    <div class="menu_container">
+        <div class="menu_items">
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">Dashboard</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a href="/" class="link flex">
+                        <i class="bx bx-home-alt"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <% if (!user) { %>
+
+                    <li class="item">
+                        <a href="/login" class="link flex">
+                            <i class="bx bx-log-in"></i>
+                            <span>Log In</span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="/signup" class="link flex">
+                            <i class="bx bx-user"></i>
+                            <span>Sign Up</span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="/cart" class="link flex">
+                            <i class="bx bx-cart"></i>
+                            <span>Cart</span>
+                        </a>
+                    </li>
+                    <% } %>
+                        <% if (user) { %>
+
+                            <li class="item">
+                                <a href="/logout" class="link flex">
+                                    <i class="bx bx-log-in"></i>
+                                    <span>Log Out</span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="/changepassword" class="link flex">
+                                    <i class="bx bx-edit-alt"></i>
+                                    <span>Change Password</span>
+                                </a>
+                            </li>
+
+                            <%if(user.position==="admin"){%>
+                                <li class="item">
+                                    <a href="/admin/editproduct" class="link flex">
+                                        <i class="fa fa-plus-square"></i>
+                                        <span>Edit Product</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="/admin/orders" class="link flex">
+                                        <i class="fa fa-plus-square"></i>
+                                        <span>Orders</span>
+                                    </a>
+                                </li>
+
+                                <%}else if(user.position==="user" ){%>
+                                    <li class="item">
+                                        <a href="/deleteaccount" class="link flex">
+                                            <i class="bx bx-error-alt"></i>
+                                            <span>Delete Account</span>
+                                        </a>
+                                    </li>
+                                    <li class="item">
+                                        <a href="/cart" class="link flex">
+                                            <i class="bx bx-cart"></i>
+                                            <span>Cart</span>
+                                        </a>
+                                    </li>
+                                    <li class="item">
+                                        <a href="/favorite" class="link flex">
+                                            <i class="fa fa-heart"></i>
+                                            <span>Favorites</span>
+                                        </a>
+                                    </li>
+                                    <li class="item">
+                                        <a href="/orders?id=<%=user._id%>" class="link flex">
+                                            <i class="fa fa-first-order"></i>
+                                            <span>Orders</span>
+                                        </a>
+                                    </li>
+                                    <%}%>
+                                        <% } %>
+
+            </ul>
+
+
+            <!-- <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">Setting</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bx-flag"></i>
+                        <span>Notice Board</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bx-award"></i>
+                        <span>Award</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>Setting</span>
+                    </a>
+                </li>
+            </ul> -->
+        </div>
+        <% if (user) { %>
+            <a href="/profile">
+                <div class="sidebar_profile flex">
+                    <span class="nav_image">
+                        <img src="<%=user.url%>" alt="logo_img" />
+                    </span>
+                    <div class="data_text">
+                        <span class="name">
+                            <%=user.username%>
+                        </span>
+                        <span class="email">
+                            <%=user.email%>
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <% } %>
+    </div>
+</div>
+
+<!-- Navbar -->
+<div class="navbar flex">
+    <i class="bx bx-menu" id="sidebar-open"></i>
+    <input type="text" placeholder="Search..." class="search_box" name="search"/>
+    <span class="nav_image">
+        <a href=""> <i class="fa fa-search"></i></a>
+    </span>
+</div>

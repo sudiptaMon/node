@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <title>Log In</title>
+</head>
+
+<body>
+
+  <div class="container" id="container">
+
+    <div class="form-container sign-in-container">
+      <form action="/admin/login" method="post">
+        <h4>
+          <%=message1%>
+        </h4>
+        <h1>Sign in</h1>
+        <h5>Admin</h5>
+        <div class="social-container">
+
+        </div>
+        <span></span>
+        <input type="text" placeholder="Username" name="username" />
+        <input type="password" placeholder="Password" name="password" />
+
+        <button type="submit">Sign In</button>
+        <a href="/login">
+          <span>Log in as user..</span>
+        </a>
+        <h3>
+          <%=message%>
+        </h3>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-right">
+          <h1>Hello, Friend!</h1>
+          <p>Enter your personal details and start journey with us</p>
+          <button class="ghost" id="signUp"><a href="/signup">Sign Up</a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+
+  </footer>
+</body>
+
+</html>

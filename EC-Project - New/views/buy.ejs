@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <script src="../script/index.js" defer></script>
+    <title>Document</title>
+    <style>
+        /* .buy-container {
+            display: flex;
+            height: 80vh;
+            width: 100vw;
+            background-color: #e2edfa;
+            justify-content: center;
+            align-items: center;
+        } */
+
+        /* .buy-warper {
+            max-width: fit-content;
+            max-height: fit-content;
+            background-color: #fff;
+            padding: 20px;
+        } */
+
+
+        @import url("https://rsms.me/inter/inter.css");
+
+        :root {
+            --color-gray: rgb(62, 67, 82);
+            --color-lighter-gray: #e3e5ed;
+            --color-light-gray: #f7f7fa;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        html {
+            font-family: "Inter", sans-serif;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        @supports (font-variation-settings: normal) {
+            html {
+                font-family: "Inter var", sans-serif;
+            }
+        }
+
+        body {
+            margin: 0;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: var(--color-gray);
+        }
+
+        hr {
+            height: 1px;
+            width: 100%;
+            background-color: var(--color-light-gray);
+            border: 0;
+            margin: 2rem 0;
+        }
+
+        .buy-container1 {
+            max-width: 30rem;
+            padding: 10vw 2rem 0;
+            margin: 0 auto;
+            height: 70vh;
+
+        }
+
+        .form {
+            display: grid;
+            grid-gap: 1rem;
+        }
+
+        .field {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--color-lighter-gray);
+            padding: .5rem;
+            border-radius: .25rem;
+        }
+
+        .field__label {
+            color: var(--color-gray);
+            font-size: 0.6rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem
+        }
+
+        .field__input {
+            padding: 0;
+            margin: 0;
+            border: 0;
+            outline: 0;
+            font-weight: bold;
+            font-size: 1rem;
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: transparent;
+        }
+
+        .field:focus-within {
+            border-color: #000;
+        }
+
+        .fields {
+            display: grid;
+            grid-gap: 1rem;
+        }
+
+        .fields--2 {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .fields--3 {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .button {
+            background-color: #000;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: block;
+            color: #fff;
+            width: 100%;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            border: 0;
+            cursor: pointer;
+            outline: 0;
+        }
+
+        .button:focus-visible {
+            background-color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <%-include('sidebar')%>
+        <div class="buy-container">
+            <form action="/payment?id=<%=productId%>" method="post">
+                <div class="buy-container1">
+                    <h1>Shipping</h1>
+                    <p>Please enter your shipping details.</p>
+                    <hr />
+                    <div class="form">
+
+                        <div class="fields fields--2">
+                            <label class="field">
+                                <span class="field__label" for="firstname">First name</span>
+                                <input class="field__input" type="text" id="firstname" name="firstname"/>
+                            </label>
+                            <label class="field">
+                                <span class="field__label" for="lastname">Last name</span>
+                                <input class="field__input" type="text" id="lastname" name="lastname"/>
+                            </label>
+                        </div>
+                        <label class="field">
+                            <span class="field__label" for="address">Address</span>
+                            <input class="field__input" type="text" id="address" name="address"/>
+                        </label>
+                        <label class="field">
+                            <span class="field__label" for="country">Country</span>
+                            <select class="field__input" id="country" name="country">
+                                <option value=""></option>
+                                <option value="India">India</option>
+                                <option value="Bharat">Bharat</option>
+                            </select>
+                        </label>
+                        <div class="fields fields--3">
+                            <label class="field">
+                                <span class="field__label" for="zipcode">Pin code</span>
+                                <input class="field__input" type="text" id="zipcode" name="zipcode"/>
+                            </label>
+                            <label class="field">
+                                <span class="field__label" for="city">City</span>
+                                <input class="field__input" type="text" id="city" name="city"/>
+                            </label>
+                            <label class="field">
+                                <span class="field__label" for="state">State</span>
+                                <select class="field__input" id="state" name="state">
+                                    <option value=""></option>
+                                    <option value="west bengal">West Bengal</option>
+                                </select>
+                            </label>
+                            <label class="field">
+                                <span class="field__label" for="phone">Mobile No</span>
+                                <input type="text" class="field__input" id="phone" name="phone">
+                            </label>
+                        </div>
+                    </div>
+                    <hr>
+                    <button class="button" type="submit">Continue</button>
+                </div>
+            </form>
+        </div>
+        </div>
+</body>
+
+</html>
